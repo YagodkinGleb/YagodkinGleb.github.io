@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#204b43">
+<meta name="description" content="Один понятный шаг, когда трудно встать, начать дело или остановить ленту. Личный чек-лист без гонки и чувства долга.">
+<link rel="manifest" href="./manifest.webmanifest" data-install-resource>
+<link rel="apple-touch-icon" href="./icon-180.png" data-install-resource>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Один шаг">
+<title>Один шаг — что делать сейчас</title>
+<meta name="app-version" content="1.3.0">
+<style>
+:root{--bg:#f5f3ed;--paper:#fffefa;--ink:#203d36;--muted:#6a746b;--line:#dddfd4;--green:#204b43;--soft:#e8eddf;--orange:#bd5435;--peach:#f4dfce;--shadow:0 16px 60px #203d360b;--radius:24px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}button,input,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}a{color:var(--green)}[hidden]{display:none!important}h1,h2,h3,p{margin:0}button{color:inherit}header{max-width:1100px;margin:auto;padding:28px 36px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font-size:19px;font-weight:750;letter-spacing:-.6px}.mark{width:30px;height:30px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:white}.mark svg{width:17px;height:17px}.date{font-size:12px;color:var(--muted)}main{max-width:1100px;margin:auto;padding:20px 36px 140px}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:1.8px;font-weight:700;color:var(--muted)}h1{font-size:clamp(35px,5.2vw,60px);line-height:1.08;letter-spacing:-2.4px;font-weight:650}h2{font-size:26px;line-height:1.2;letter-spacing:-.9px}h3{font-size:18px;letter-spacing:-.35px}.muted{color:var(--muted)}.hero{position:relative;border-radius:32px;background:var(--green);color:#fffdf5;padding:38px 40px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:20px;margin-bottom:28px}.hero .eyebrow{color:#c5d3b9;margin-bottom:16px}.hero p{max-width:480px;color:#d9e1d4;margin-top:18px;font-size:16px}.orbit{position:relative;align-self:center;width:155px;height:155px;border:1px solid #8ea99660;border-radius:50%}.orbit:before{content:"";position:absolute;inset:22px;border:1px solid #8ea99670;border-radius:50%}.orbit:after{content:"";position:absolute;inset:47px;background:#d9dfac;border-radius:50%}.orbit i{position:absolute;width:23px;height:23px;left:7px;top:19px;border-radius:50%;background:#e6a382}.sectionline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.sectionline h2{font-size:21px}.tag{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:23px;text-align:left;min-height:180px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s;display:flex;flex-direction:column;align-items:flex-start}.card:hover{transform:translateY(-2px);border-color:#819887}.card .icon{width:37px;height:37px;border-radius:12px;background:var(--soft);display:grid;place-items:center;margin-bottom:17px}.icon svg{width:21px;height:21px}.card p{font-size:13px;color:var(--muted);margin-top:7px;max-width:220px}.card .cardtop{display:flex;justify-content:space-between;width:100%;align-items:flex-start}.arrow{font-size:21px;font-weight:400;color:#829080}.card:nth-child(2) .icon,.card:nth-child(3) .icon{background:var(--peach)}.note{margin-top:20px;display:flex;align-items:center;gap:14px;padding:19px 22px;border:1px solid var(--line);border-radius:18px;font-size:14px}.note b{font-weight:600}.note .tinyicon{font-size:23px;color:var(--orange)}.note p{color:var(--muted);font-size:13px}.textbtn{background:none;border:0;text-decoration:underline;text-underline-offset:4px;font-size:13px;padding:8px;color:var(--green)}nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:6px;display:flex;gap:4px;background:#fffefaf5;border:1px solid var(--line);border-radius:22px;box-shadow:0 8px 35px #203d3618;z-index:5;backdrop-filter:none}nav button{border:0;background:none;border-radius:16px;padding:12px 24px;font-size:14px;white-space:nowrap;color:var(--muted);min-height:48px}nav button.active{background:var(--green);color:white}.pagelead{margin:10px 0 25px}.pagelead p{margin-top:14px;max-width:540px;color:var(--muted)}.segmented{display:flex;gap:4px;border:1px solid var(--line);background:#eeeee5;padding:4px;border-radius:14px;width:fit-content;margin-bottom:22px}.segmented button{border:0;background:transparent;padding:10px 17px;border-radius:10px;font-size:14px;min-height:44px}.segmented button.active{background:var(--paper);box-shadow:0 2px 5px #203d3610}.daily-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}.checklist{border:1px solid var(--line);background:var(--paper);border-radius:24px;overflow:hidden}.checkrow{padding:19px 20px;display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--line);cursor:pointer}.checkrow:last-child{border-bottom:0}.checkrow input{appearance:none;flex:0 0 25px;width:25px;height:25px;margin:2px 0 0;border:1.5px solid #a3afa0;border-radius:8px;background:white;cursor:pointer;display:grid;place-content:center}.checkrow input:checked{background:var(--green);border-color:var(--green)}.checkrow input:checked:after{content:"✓";color:white;font-size:17px}.checkrow:has(input:checked){background:#f1f4e9}.checkrow strong{font-size:15px;font-weight:600}.checkrow small{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.55}.checkfoot{margin-top:12px;font-size:12px;color:var(--muted)}.aside{background:var(--soft);border-radius:24px;padding:25px;height:fit-content}.aside p{font-size:14px;margin-top:11px;color:#536451}.aside textarea{width:100%;min-height:125px;resize:vertical;background:#fffefa90;border:1px solid #ccd6c0;border-radius:14px;padding:14px;color:var(--ink);margin-top:16px;font-size:15px}.saved{font-size:11px;color:var(--muted);min-height:20px;margin-top:7px}.aside label{font-weight:600;font-size:18px}.aside .muted{font-size:12px;margin-top:17px}.helpstack{max-width:720px}.helpstack details{background:var(--paper);border:1px solid var(--line);border-radius:18px;margin-bottom:12px;padding:0 20px}.helpstack summary{padding:20px 0;cursor:pointer;font-weight:600}.helpstack details p,.helpstack details ul{font-size:14px;margin:0 0 18px;line-height:1.7;color:#526157}.helpstack li{margin:9px 0}.helpstack details a{overflow-wrap:anywhere}.storage-note{font-size:12px;color:var(--muted);margin-top:22px;max-width:650px}.button{border:0;background:var(--green);color:white;padding:16px 22px;border-radius:15px;font-weight:600;font-size:15px;min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none}.button.secondary{background:var(--soft);color:var(--green)}.button.ghost{background:none;border:1px solid var(--line);color:var(--green)}.warning{padding:14px 18px;border-radius:14px;background:var(--peach);font-size:13px;margin:10px 0}.downloadline{margin-top:20px}.quiet{font-size:12px;color:var(--muted);margin-top:10px}
+dialog{padding:0;border:0;border-radius:28px;width:min(600px,calc(100% - 24px));max-height:calc(100dvh - 32px);background:var(--paper);color:var(--ink);box-shadow:0 25px 90px #102b3b40;overflow:auto}dialog::backdrop{background:#142f2bbd;backdrop-filter:none}.dialog-top{padding:20px 25px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:15px}.dialog-top span{font-size:12px;font-weight:650;color:var(--muted)}.close{height:40px;width:40px;border:1px solid var(--line);border-radius:50%;background:transparent;font-size:22px;display:grid;place-items:center}.dialog-body{padding:30px}.step-progress{display:flex;gap:5px;margin-bottom:25px}.step-progress i{height:4px;background:var(--line);border-radius:4px;flex:1}.step-progress i.done{background:var(--green)}.step-number{font-size:11px;color:var(--orange);text-transform:uppercase;letter-spacing:1.6px;font-weight:700;margin-bottom:12px}.dialog-body h2{font-size:31px;line-height:1.17;letter-spacing:-1px;margin-bottom:15px}.step-description{font-size:16px;line-height:1.65;color:#526157}.step-tip{font-size:13px;padding:14px 16px;background:#f0f1e8;border-radius:13px;margin-top:20px;color:#586851}.step-input{display:block;width:100%;margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:12px;background:white;min-height:95px;resize:vertical}.choice-list{display:grid;gap:9px;margin-top:22px}.choice{border:1px solid var(--line);background:#fff;padding:15px 17px;border-radius:14px;text-align:left;display:flex;gap:10px;align-items:center;justify-content:space-between;font-size:14px;min-height:52px}.choice:hover{background:var(--soft)}.dialog-footer{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.dialog-footer .button{flex:1}.back{background:none;border:0;font-size:13px;padding:12px;color:var(--muted)}.timer{margin-top:24px;padding:23px;background:var(--soft);border-radius:18px;text-align:center}.time{font-size:46px;line-height:1.1;letter-spacing:-1px;font-variant-numeric:tabular-nums;font-weight:550}.timer p{font-size:12px;color:#59664f;margin-top:8px}.timer-controls{display:flex;justify-content:center;gap:10px;margin-top:16px}.timer-controls button{min-height:44px;padding:10px 18px;font-size:13px;border:0;border-radius:11px;background:var(--green);color:white}.timer-controls .reset{background:#fffefa;color:var(--green)}.complete-mark{width:61px;height:61px;background:var(--soft);border-radius:50%;display:grid;place-items:center;font-size:27px;margin-bottom:21px}.floating{position:fixed;right:22px;bottom:100px;z-index:6;background:var(--green);color:white;border:0;border-radius:14px;padding:12px 18px;box-shadow:var(--shadow);font-size:13px;max-width:calc(100% - 40px)}.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:30;padding:12px 18px;background:var(--green);color:white;font-size:13px;border-radius:13px;max-width:90%;box-shadow:var(--shadow)}.mini-note{padding:15px 0 0;color:var(--muted);font-size:12px}.skiplink{position:fixed;left:12px;top:-100px;z-index:40;background:white;padding:10px}.skiplink:focus{top:12px}
+@media(min-width:900px){.hero{min-height:280px}.grid .card{min-height:192px}}
+@media(max-width:700px){header{padding:23px 20px 12px}.date{font-size:11px}main{padding:15px 18px 125px}.hero{padding:28px 25px;grid-template-columns:1fr 55px;gap:8px;border-radius:25px;margin-bottom:25px}.hero h1{font-size:37px;letter-spacing:-1.6px}.hero p{font-size:14px;margin-top:14px}.orbit{width:73px;height:73px;align-self:start;margin-top:40px;right:15px}.orbit:before{inset:11px}.orbit:after{inset:23px}.orbit i{width:12px;height:12px;left:3px;top:9px}.hero .eyebrow{font-size:9px;letter-spacing:1.2px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:17px;min-height:184px;border-radius:20px}.card h3{font-size:16px;line-height:1.3}.card p{font-size:12px}.card .icon{margin-bottom:14px;width:34px;height:34px}.sectionline .tag{display:none}.note{align-items:flex-start;padding:16px}.daily-layout{grid-template-columns:1fr}.pagelead h1{font-size:37px;letter-spacing:-1.5px}.pagelead p{font-size:14px}.dialog-body{padding:25px 22px}.dialog-top{padding:13px 20px}.dialog-body h2{font-size:29px}.step-description{font-size:15px}nav{bottom:max(12px,env(safe-area-inset-bottom));width:calc(100% - 36px);max-width:440px;justify-content:space-between;border-radius:20px}nav button{flex:1;padding:12px 10px;font-size:13px}.floating{bottom:92px;right:18px}.helpstack summary{font-size:15px}.note .textbtn{padding-right:0}.dialog-footer .button{padding:14px 15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Constrain intrinsic sizes; preserve browser zoom and Dynamic Type. */
+html{width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+body{width:100%;min-width:0;overflow-x:hidden}
+main,header,.hero>div,.card,.daily-layout>*,.note>div{min-width:0}
+h1,h2,h3,p,.button,.choice{overflow-wrap:anywhere}
+textarea,input{font-size:16px!important}
+button{touch-action:manipulation}
+nav{left:18px;right:18px;transform:none;width:max-content;max-width:calc(100% - 36px);margin:0 auto;background:var(--paper)}
+dialog{max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overscroll-behavior:contain}
+@media(max-width:700px){
+ .hero{display:block;padding:26px 22px}.hero .orbit{display:none}
+ .hero h1{font-size:clamp(28px,8.5vw,36px);line-height:1.14;letter-spacing:-1px}
+ nav{width:auto;max-width:440px}.card:hover{transform:none}
+ .dialog-body h2{font-size:27px}.dialog-footer .button{flex-basis:100%}
+ .note{flex-wrap:wrap}.note>div{flex:1 1 200px}
+}
+@media(max-width:350px){.grid{grid-template-columns:1fr}.card{min-height:0}.card .icon{margin-bottom:9px}}
+
+:root{color-scheme:light;--action:#204b43;--action-ink:#fffdf5;--field:#fffefa;--tip:#f0f1e8;--body-text:#526157}
+html[data-theme="dark"]{color-scheme:dark;--bg:#111b19;--paper:#1b2925;--ink:#e2e9dd;--muted:#acb9ae;--line:#3b4c43;--green:#accab4;--action:#b0c5a3;--action-ink:#17271f;--soft:#27362e;--peach:#403329;--orange:#e4a78b;--shadow:none;--field:#14211c;--tip:#29372e;--body-text:#c4cec2}
+@media(prefers-color-scheme:dark){html:not([data-theme="light"]):not([data-theme="dark"]){color-scheme:dark;--bg:#111b19;--paper:#1b2925;--ink:#e2e9dd;--muted:#acb9ae;--line:#3b4c43;--green:#accab4;--action:#b0c5a3;--action-ink:#17271f;--soft:#27362e;--peach:#403329;--orange:#e4a78b;--shadow:none;--field:#14211c;--tip:#29372e;--body-text:#c4cec2}}
+.hero{background:#204b43}.mark,.button:not(.secondary):not(.ghost),nav button.active,.timer-controls button:not(.reset),.floating,.toast{background:var(--action);color:var(--action-ink)}
+.button.secondary,.button.ghost{color:var(--ink)}
+.step-description,.helpstack details p,.helpstack details ul,.aside p,.timer p{color:var(--body-text)}
+.step-tip{background:var(--tip);color:var(--body-text)}
+.step-input,.choice,.aside textarea,.checkrow input,.skiplink{background:var(--field);color:var(--ink);border-color:var(--line)}
+.checkrow:has(input:checked),.segmented{background:var(--soft)}
+.checkrow input:checked,.step-progress i.done{background:var(--action);border-color:var(--action)}
+.checkrow input:checked:after{color:var(--action-ink)}
+.timer-controls .reset{background:var(--paper);color:var(--ink)}
+.header-tools{display:flex;gap:12px;align-items:center}.theme-select{font-size:13px;min-height:44px;max-width:155px;padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.night-entry{width:100%;display:flex;gap:15px;align-items:center;text-align:left;padding:20px 22px;border:1px solid var(--line);border-radius:20px;background:var(--soft);color:var(--ink);margin-bottom:25px}
+.night-entry strong{display:block;font-size:18px}.night-entry small{display:block;color:var(--muted);font-size:13px;margin-top:4px}.night-entry .moon{font-size:26px}.night-entry .arrow{margin-left:auto}
+.offline-list{padding-left:22px;margin:18px 0 0;color:var(--body-text);font-size:16px}.offline-list li{margin:12px 0}.sleep-exit{max-width:500px;margin:15vh auto 0;text-align:center}.sleep-exit h1{font-size:36px;letter-spacing:-1px}.sleep-exit p{color:var(--muted);margin:18px 0 26px}
+.night-plan{margin:0 0 20px;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--paper)}.night-plan p{white-space:pre-wrap;overflow-wrap:anywhere;margin:10px 0 6px}.night-plan small{color:var(--muted)}
+.quiet-exit{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}.quiet-exit button{background:none;border:0;padding:10px 0;color:var(--muted);font-size:13px;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+@media(max-width:700px){.header-tools .date{display:none}.theme-select{max-width:139px;font-size:12px}header{gap:8px}.brand{font-size:18px}.night-entry{padding:17px}.night-entry strong{font-size:17px}}
+
+.offline-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 14px;font-size:12px;color:var(--muted)}.offline-status p{margin:0}.offline-status button{padding:6px 0;min-height:36px}.offline-status[data-ready="true"] p:before{content:"✓ ";color:var(--green)}
+</style>
+</head>
+<body>
+<a href="#main" class="skiplink">К содержимому</a>
+<header><button class="brand" data-page="now" aria-label="Один шаг — главная"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13m-5-5 5 5-5 5"/></svg></span>один шаг</button><div class="header-tools"><span class="date" id="todayDate"></span><label class="sr-only" for="themeSelect">Цветовая тема</label><select class="theme-select" id="themeSelect"><option value="auto">Тема: как на устройстве</option><option value="dark">Тёмная тема</option><option value="light">Светлая тема</option></select></div></header>
+<main id="main">
+<div class="offline-status" id="offlineStatus"><p id="offlineText" role="status">Сохраняю приложение для работы без интернета…</p><button class="textbtn" id="offlineRetry" hidden>Повторить</button></div>
+<section id="page-now" aria-label="Помощь сейчас">
+<div class="hero"><div><div class="eyebrow">Когда трудно начать или остановиться</div><h1>Что делать<br>прямо сейчас?</h1><p>Выбери свою ситуацию. Здесь короткие инструкции — можно сразу попробовать.</p></div><div class="orbit" aria-hidden="true"><i></i></div></div>
+<button class="night-entry" data-flow="bedtime"><span class="moon" aria-hidden="true">☾</span><span><strong>Уже ночь, а я не ложусь</strong><small>Хочется открыть проект, листать дальше или просто не спится.</small></span><span class="arrow" aria-hidden="true">↗</span></button>
+<div class="sectionline"><h2>А если сейчас другое</h2><span class="tag">Можно начать с любого места</span></div>
+<div class="grid" id="cards"></div>
+<div class="note"><span class="tinyicon" aria-hidden="true">↳</span><div><b>Можно просто отдохнуть.</b><p>Свободное время не обязательно чем-то заполнять.</p></div></div>
+</section>
+<section id="page-day" hidden aria-label="Мой день">
+<div class="pagelead"><div class="eyebrow">Мой день</div><h1>Что мне сегодня<br>пригодится.</h1><p>Выбирай по силам. Закрывать весь список не нужно.</p></div>
+<div class="night-plan" id="nightPlan" hidden><strong>После сна</strong><p id="nightPlanText"></p><small>Запись останется здесь, пока ты её не удалишь.</small><div><button class="textbtn" data-flow="nightProject">Изменить запись</button><button class="textbtn" id="clearNightNote">Удалить</button></div></div>
+<div class="segmented" aria-label="Объём чек-листа"><button id="minimalBtn" class="active" aria-pressed="true">Минимум</button><button id="fullBtn" aria-pressed="false">Больше вариантов</button></div>
+<div class="note" id="plannedStep" hidden style="margin:0 0 20px"><div><b>Мой ближайший шаг</b><p id="plannedText"></p></div><button class="textbtn" data-flow="work">Начать</button></div><div class="daily-layout"><div><div class="checklist" id="dailyList"></div><p class="checkfoot" id="dailyCount" aria-live="polite"></p><p class="checkfoot">Галочки обновляются в полночь. Записи остаются.</p></div><aside class="aside"><label for="ownNote">Что-нибудь своё</label><p>Одна мысль, строчка, набросок. Можно криво и незаконченно. Публиковать не нужно.</p><textarea id="ownNote" placeholder="Мне пришло в голову…" maxlength="3000"></textarea><div class="saved" id="noteSaved" aria-live="polite"></div><button class="button secondary" data-flow="create">Дать себе 10 минут ↗</button><p class="muted">Если сейчас хочется просто отдохнуть — запись может остаться пустой.</p></aside></div>
+</section>
+<section id="page-help" hidden aria-label="Справка и настройки">
+<div class="pagelead"><div class="eyebrow">Если хочется разобраться</div><h1>Коротко<br>о важном.</h1><p>Сон, привычки и работа приложения.</p></div>
+<div class="helpstack">
+<details><summary>С чего начать, когда ничего не хочется</summary><p>Уменьши задачу до действия, которое сейчас посильно: сесть на кровати, открыть документ, убрать одну чашку. После реши, продолжать ли. Если устал или не выспался, сначала займись этим.</p></details>
+<details><summary>Если снова залип</summary><p>Закрыть ленту можно сейчас, даже если уже прошёл час. Не нужно досматривать до конца или ждать круглого времени.</p><p>Смотри на последствия: хватает ли сна и времени на дела, получается ли остановиться, когда решил. Если привычка регулярно мешает жить и самому с ней трудно, обратись за помощью.</p></details>
+<details><summary>Сон: когда действительно нужно поспать</summary><p>Одиннадцать утра — не «плохое» время само по себе. Если лёг в три, это может быть обычный полноценный сон. Большинству взрослых нужно примерно 7–9 часов.</p><p>При недосыпе оставь время на восстановление. Если регулярно спишь достаточно, но сильно клонит в сон или постоянно нет сил, стоит обсудить это с врачом. Не пытайся всё исправить дисциплиной.</p></details>
+<details><summary>Ночью хочется начать проект</summary><p>Запиши идею и первое действие после сна. Например: «Открыть сценарий и переписать первую реплику». Для записи не нужно запускать проект или искать материалы.</p><p>Если пока не хочется спать, выбери спокойное занятие при приглушённом свете. Ложись, когда появится сонливость. Если лежишь без сна и всё сильнее раздражаешься, встань ненадолго и вернись в кровать, когда начнёт клонить в сон.</p><p>Тёмная тема делает экран менее ярким, но не мешает увлечься перепиской или работой. Этот сценарий заканчивается предложением убрать телефон.</p><p><button class="button secondary" data-flow="bedtime">Открыть инструкцию на ночь</button></p></details>
+<details><summary>Как пользоваться без интернета</summary><p>Один раз открой приложение с интернетом и дождись надписи «Готово к работе без интернета». Затем инструкции, записи, галочки и таймеры доступны без сети.</p><p>После добавления на экран «Домой» открой приложение с иконки, пока интернет ещё включён, и дождись той же надписи. Для проверки закрой приложение, включи авиарежим, выключи Wi-Fi и открой его снова.</p><p>Интернет нужен для первой загрузки, обновлений и перехода по ссылкам на исследования. Уведомлений нет. Если удалить данные сайта, офлайн-копию придётся загрузить заново.</p></details>
+<details><summary>Как пользоваться таймерами</summary><p>Две, пять или десять минут — просто удобный отрезок. Таймер можно не включать или закончить раньше.</p><p>Таймер продолжает отсчёт, когда вкладка скрыта, но не подаёт системный сигнал при закрытом приложении. Для прогулки или отдыха с заблокированным экраном удобнее обычный таймер телефона.</p></details>
+<details><summary>Когда одной инструкции недостаточно</summary><p>Если подавленность, тревога, бессонница или потеря контроля устойчиво мешают работе, отношениям и повседневной жизни, стоит обратиться к специалисту. Не нужно сначала добиться идеального режима.</p><p>Приложение помогает выбрать следующее действие. Оно не определяет причину симптомов и не заменяет лечение.</p></details>
+<details><summary>На что опирается инструкция</summary><ul><li><a href="https://www.nhs.uk/conditions/insomnia/" target="_blank" rel="noopener noreferrer">NHS: сон и бессонница</a>.</li><li><a href="https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-fall-asleep-faster-and-sleep-better/" target="_blank" rel="noopener noreferrer">NHS: что помогает подготовиться ко сну</a>.</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/38127505/" target="_blank" rel="noopener noreferrer">Сон и эмоции: метаанализ экспериментальных исследований</a>.</li><li><a href="https://academic.oup.com/pnasnexus/article/4/2/pgaf017/8016017" target="_blank" rel="noopener noreferrer">Ограничение интернета на смартфоне: эксперимент 2025 года</a>.</li><li><a href="https://www.mirecc.va.gov/MIRECC/visn5/EBT/CBT-SUD/Urge-Surfing.asp" target="_blank" rel="noopener noreferrer">Наблюдение за позывом: техника urge surfing</a>. Здесь используется общий принцип паузы; это не означает, что у тебя зависимость.</li><li><a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" target="_blank" rel="noopener noreferrer">ВОЗ: физическая активность</a>.</li></ul><p>Шаги составлены для повседневных ситуаций из нашего разговора. Их длительность — пример, а не медицинское назначение.</p></details>
+<details><summary>Мои отметки и личные записи</summary><p>Отметки и записи сохраняются только в этом браузере на этом устройстве. Между устройствами они не синхронизируются. В приватном режиме или после очистки данных браузера могут исчезнуть.</p><p>Новый день начинается в полночь по Москве. Сбрасываются только ежедневные галочки. Записи сохраняются до твоего удаления. Запланированный на завтра шаг переносится в новый день. Активная инструкция и таймер продолжают работать.</p><button class="button ghost" id="clearData">Стереть мои отметки и записи</button><p class="quiet">Потребуется подтверждение.</p></details>
+</div>
+<div class="downloadline"><button class="button secondary" id="download">↓ Скачать HTML-копию</button><p class="quiet">Один файл без внешних ресурсов. Открывается в обычном браузере; на телефоне удобнее пользоваться ссылкой.</p></div>
+</section>
+<section id="page-closed" hidden aria-label="Инструкция закончена"><div class="sleep-exit"><span class="moon" aria-hidden="true">☾</span><h1>На сегодня всё.</h1><p>Теперь можно закрыть вкладку и отложить телефон. Возвращаться, чтобы поставить галочку, не нужно.</p><button class="textbtn" data-page="now">Вернуться к инструкциям</button></div></section>
+<p class="warning" id="storageWarning" hidden>Браузер не разрешает сохранять данные. Сейчас всё работает, но после закрытия отметки могут исчезнуть.</p>
+</main>
+<nav aria-label="Разделы"><button data-page="now" class="active" aria-current="page">Сейчас</button><button data-page="day">Мой день</button><button data-page="help">Справка</button></nav>
+<dialog id="flowDialog" aria-labelledby="stepTitle"><div class="dialog-top"><span id="flowName"></span><button class="close" id="closeDialog" aria-label="Закрыть инструкцию">×</button></div><div class="dialog-body" id="flowBody"></div></dialog>
+<button class="floating" id="resume" hidden></button><div class="toast" id="toast" role="status" hidden></div>
+<script>
+(function(){
+
+'use strict';
+const $=s=>document.querySelector(s);
+const STORE='odin-shag-v1';
+const themeMedia=window.matchMedia?.('(prefers-color-scheme: dark)');
+let themeChoice='auto';
+try{const savedTheme=localStorage.getItem('odin-shag-theme');if(['auto','dark','light'].includes(savedTheme))themeChoice=savedTheme;}catch(e){}
+function applyTheme(){const dark=themeChoice==='dark'||(themeChoice==='auto'&&!!themeMedia?.matches);document.documentElement.setAttribute('data-theme',dark?'dark':'light');$('#themeSelect').value=themeChoice;document.querySelector('meta[name="theme-color"]')?.setAttribute('content',dark?'#111b19':'#f5f3ed');}
+$('#themeSelect').addEventListener('change',e=>{themeChoice=e.target.value;applyTheme();try{localStorage.setItem('odin-shag-theme',themeChoice);}catch(e){toast('Тема изменена. Браузер не разрешил сохранить выбор.');}});
+if(themeMedia?.addEventListener)themeMedia.addEventListener('change',()=>{if(themeChoice==='auto')applyTheme();});
+applyTheme();
+const dayFormat=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Moscow',year:'numeric',month:'2-digit',day:'2-digit'});
+const labelFormat=new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',timeZone:'Europe/Moscow'});
+const TODAY=()=>dayFormat.format(new Date());
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fresh=()=>({day:TODAY(),checks:{},note:'',task:'',tomorrow:'',nightNote:'',minimum:true,flow:null,timer:null});
+let state=fresh(),storageOK=true;
+try{
+ const saved=JSON.parse(localStorage.getItem(STORE)||'null');
+ if(saved&&typeof saved==='object'&&!Array.isArray(saved)){
+  for(const key of ['note','task','tomorrow','nightNote'])if(typeof saved[key]==='string')state[key]=saved[key];
+  if(typeof saved.minimum==='boolean')state.minimum=saved.minimum;
+  if(saved.day===TODAY()&&saved.checks&&typeof saved.checks==='object'&&!Array.isArray(saved.checks))state.checks=saved.checks;
+  if(saved.day!==TODAY()&&state.tomorrow){state.task=state.tomorrow;state.tomorrow='';}
+  if(saved.flow&&typeof saved.flow==='object')state.flow=saved.flow;
+  if(saved.timer&&typeof saved.timer==='object')state.timer=saved.timer;
+ }
+}catch(e){storageOK=false;}
+function putText(selector,value){const n=$(selector);if(n&&n.textContent!==value)n.textContent=value;}
+let clockJob=null,dayJob=null;
+function scheduleClock(){clearTimeout(clockJob);clockJob=null;if(!document.hidden&&state.timer?.running)clockJob=setTimeout(tick,1000);}
+function scheduleDay(){clearTimeout(dayJob);dayJob=null;if(!document.hidden)dayJob=setTimeout(()=>{dayCheck();scheduleDay();},60000);}
+function validateSession(){
+ const f=state.flow;
+ if(!f||!flows[f.id]||!Number.isInteger(f.step)||f.step<0||f.step>=flows[f.id].steps.length){state.flow=null;state.timer=null;return;}
+ const t=state.timer;
+ if(t&&(!Number.isFinite(t.left)||t.left<0||!Number.isFinite(t.end)||t.key!==currentTimerKey()||typeof t.running!=='boolean'))state.timer=null;
+}
+
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){storageOK=false;}$('#storageWarning').hidden=storageOK;}
+function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toast.id);toast.id=setTimeout(()=>$('#toast').hidden=true,3000);}
+const paths={sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>',phone:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/>',leaf:'<path d="M20 3C9 1 2 7 5 15c4 8 17 3 15-12Z"/><path d="M4 21 16 8"/>',pen:'<path d="m4 16-1 5 5-1L20 8l-4-4L4 16Z"/><path d="m13 7 4 4"/>',cloud:'<path d="M6 18a5 5 0 0 1-1-10 7 7 0 0 1 13-1 5.5 5.5 0 0 1 0 11H6Z"/>',moon:'<path d="M20 14A9 9 0 0 1 10 3a9 9 0 1 0 10 11Z"/>'};
+const cards=[['wake','sun','Не могу встать','Ноги на пол. Дальше — по одному шагу.'],['urge','phone','Тянет залипнуть','Рилсы, новости, порно. Сделать паузу.'],['tired','leaf','Сил почти нет','Поесть, поспать или просто отдохнуть.'],['work','pen','Не могу начать','Выбрать одно действие и попробовать.'],['overload','cloud','Голова кипит','Закрыть ленту и немного прийти в себя.'],['evening','moon','Хватит работать','Оставить заметку на завтра и закрыть дела.']];
+$('#cards').innerHTML=cards.map(([id,icon,title,desc])=>`<button class="card" data-flow="${id}"><span class="cardtop"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths[icon]}</svg></span><span class="arrow" aria-hidden="true">↗</span></span><h3>${title}</h3><p>${desc}</p></button>`).join('');
+const daily=[
+{id:'sleep',title:'Оставить время на сон',sub:'Ориентир — 7–9 часов. Можно отметить, если выспался или защитил время на ближайшую ночь.',min:true},
+{id:'outside',title:'Выйти на дневной свет',sub:'Немного пройтись. Пять минут — подходящее начало, если сил мало.',min:true},
+{id:'finish',title:'Закончить работу на сегодня',sub:'Оставить следующий шаг на завтра и закрыть несрочные чаты.',min:true},
+{id:'food',title:'Спокойно поесть',sub:'Один обычный приём пищи без параллельной работы.'},
+{id:'focus',title:'Сделать одно дело без переключений',sub:'Например, 25 минут. Можно начать с двух.'},
+{id:'create',title:'Сделать что-нибудь своё',sub:'Строчка, набросок, готовка, музыка. Результат не обязан быть полезным.'},
+{id:'rest',title:'Отдохнуть так, как мне подходит',sub:'Разговор, фильм, игра или просто полежать. Без обязательной продуктивности.'}
+];
+function dayCheck(){const day=TODAY();if(state.day!==day){state.day=day;state.checks={};if(state.tomorrow){state.task=state.tomorrow;state.tomorrow='';}save();renderDay();renderDate();updateResume();}}
+function renderDate(){putText('#todayDate',labelFormat.format(new Date()));}
+function renderDay(){$('#nightPlan').hidden=!state.nightNote;$('#nightPlanText').textContent=state.nightNote||'';$('#plannedStep').hidden=!state.task;$('#plannedText').textContent=state.task||'';const items=daily.filter(x=>!state.minimum||x.min);$('#dailyList').innerHTML=items.map(x=>`<label class="checkrow"><input type="checkbox" data-check="${x.id}" ${state.checks[x.id]?'checked':''}><span><strong>${x.title}</strong><small>${x.sub}</small></span></label>`).join('');$('#dailyCount').textContent=`Сегодня отмечено: ${daily.filter(x=>state.checks[x.id]).length}.`;$('#minimalBtn').classList.toggle('active',state.minimum);$('#fullBtn').classList.toggle('active',!state.minimum);$('#minimalBtn').setAttribute('aria-pressed',String(state.minimum));$('#fullBtn').setAttribute('aria-pressed',String(!state.minimum));$('#ownNote').value=state.note||'';}
+function page(name){dayCheck();if(!['now','day','help','closed'].includes(name))return;document.querySelector('nav').hidden=name==='closed';if(name==='day')renderDay();document.querySelectorAll('main>section').forEach(s=>s.hidden=s.id!=='page-'+name);document.querySelectorAll('nav button').forEach(b=>{b.classList.toggle('active',b.dataset.page===name);if(b.dataset.page===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});window.scrollTo({top:0,behavior:'auto'});}
+const flows={
+ "wake": {
+  "name": "Встать с кровати",
+  "check": "outside",
+  "steps": [
+   {
+    "title": "Ты выспался?",
+    "text": "Если лёг поздно, подъём в 11 может быть нормальным. Сначала разберись, хватило ли сна.",
+    "choices": [
+     [
+      "Да, но не хочется вставать",
+      "next"
+     ],
+     [
+      "Нет, мне нужно ещё поспать",
+      "sleep"
+     ]
+    ]
+   },
+   {
+    "title": "Сядь и поставь ноги на пол.",
+    "text": "Пока только это. Весь день планировать сейчас не нужно."
+   },
+   {
+    "title": "Открой шторы и умойся.",
+    "text": "Телефон оставь на месте. Ленту и рабочие чаты откроешь позже."
+   },
+   {
+    "title": "Выйди ненадолго на улицу.",
+    "text": "Оденься и пройдись без ленты. Пять минут для начала. Если выйти нельзя, побудь у окна и немного подвигайся.",
+    "timer": 300,
+    "timerLabel": "Короткая прогулка",
+    "tip": "Прочитал — можно убрать телефон. Возвращаться ради кнопки не нужно."
+   },
+   {
+    "title": "Если голоден — позавтракай.",
+    "text": "Потом реши, чем займёшься. Можно записать свою мысль, прежде чем открывать чужую ленту.",
+    "choices": [
+     [
+      "Хочу записать мысль",
+      "create"
+     ],
+     [
+      "Дальше сам",
+      "complete"
+     ]
+    ]
+   }
+  ]
+ },
+ "sleep": {
+  "name": "Если не выспался",
+  "steps": [
+   {
+    "title": "Можешь ещё поспать?",
+    "text": "Если да, поставь будильник с учётом своих дел и убери телефон. Здесь будильника нет.",
+    "tip": "Если вставать всё-таки нужно, сократи необязательные дела. При сильной сонливости не садись за руль."
+   },
+   {
+    "title": "Снизь нагрузку на сегодня.",
+    "text": "Оставь самые нужные дела. Если спишь достаточно, а днём постоянно клонит в сон, обсуди это с врачом."
+   }
+  ]
+ },
+ "urge": {
+  "name": "Тянет к телефону",
+  "steps": [
+   {
+    "title": "Что хочется открыть?",
+    "text": "Выбери, и попробуем ненадолго отвлечься.",
+    "choices": [
+     [
+      "Рилсы или ленту",
+      "urgePause"
+     ],
+     [
+      "Новости",
+      "urgePause"
+     ],
+     [
+      "Порно",
+      "urgePorn"
+     ]
+    ]
+   }
+  ]
+ },
+ "urgePause": {
+  "name": "Отвлечься от ленты",
+  "steps": [
+   {
+    "title": "Закрой ленту.",
+    "text": "Не нужно досматривать ролик. Следующий шаг — встать и ненадолго отойти от телефона.",
+    "nextLabel": "Дальше"
+   },
+   {
+    "title": "Встань и смени место.",
+    "text": "Подойди к окну, налей воды или немного пройдись. Телефон можно оставить здесь.",
+    "timer": 300,
+    "timerLabel": "Пауза перед следующим решением",
+    "tip": "Таймер необязателен. Можно сразу убрать телефон."
+   },
+   {
+    "title": "Чего сейчас хочется?",
+    "text": "Выбери примерно. Если не знаешь — отдохни.",
+    "choices": [
+     [
+      "Устал — хочу отдохнуть",
+      "tired"
+     ],
+     [
+      "Скучно — нужно занятие",
+      "bored"
+     ],
+     [
+      "Тяну с делом",
+      "work"
+     ],
+     [
+      "Хочется с кем-то поговорить",
+      "connection"
+     ],
+     [
+      "Дальше решу сам",
+      "choice"
+     ]
+    ]
+   }
+  ]
+ },
+ "urgePorn": {
+  "name": "Тянет открыть порно",
+  "steps": [
+   {
+    "title": "Пока закрой видео.",
+    "text": "Само сексуальное желание нормально. Если хочется изменить привычку, начни с короткой паузы.",
+    "nextLabel": "Дальше"
+   },
+   {
+    "title": "Отойди от телефона.",
+    "text": "Немного пройдись. Попробуй понять: ты возбуждён, скучаешь, устал или хочешь отвлечься от неприятного?",
+    "timer": 300,
+    "timerLabel": "Небольшая пауза",
+    "tip": "Не нужно ждать, пока желание полностью исчезнет."
+   },
+   {
+    "title": "Что тебе подходит сейчас?",
+    "text": "Если хочется сексуальной разрядки, можно выбрать мастурбацию без порно. Если дело в скуке или усталости — попробовать другое.",
+    "choices": [
+     [
+      "Отдохнуть",
+      "tired"
+     ],
+     [
+      "Найти занятие",
+      "bored"
+     ],
+     [
+      "Поговорить с кем-то",
+      "connection"
+     ],
+     [
+      "Дальше решу сам",
+      "choice"
+     ]
+    ]
+   }
+  ]
+ },
+ "choice": {
+  "name": "Решить, что дальше",
+  "steps": [
+   {
+    "title": "Теперь выбери сам.",
+    "text": "Продолжить день, заняться другим или всё-таки посмотреть. Если выбираешь просмотр, заранее реши, когда закончишь. Для сигнала используй таймер телефона."
+   }
+  ]
+ },
+ "tired": {
+  "name": "Сил почти нет",
+  "steps": [
+   {
+    "title": "Сядь или ляг поудобнее.",
+    "text": "Можно отложить телефон и просто побыть так несколько минут.",
+    "timer": 120,
+    "timerLabel": "Короткий отдых",
+    "tip": "Приложение можно закрыть прямо сейчас."
+   },
+   {
+    "title": "Что сейчас нужнее?",
+    "text": "Если не знаешь, продолжи отдых.",
+    "choices": [
+     [
+      "Давно не ел",
+      "food"
+     ],
+     [
+      "Не выспался",
+      "sleep"
+     ],
+     [
+      "Ещё полежать",
+      "rest"
+     ],
+     [
+      "Попробовать небольшое дело",
+      "work"
+     ],
+     [
+      "Закончить",
+      "complete"
+     ]
+    ]
+   }
+  ]
+ },
+ "food": {
+  "name": "Поесть",
+  "check": "food",
+  "steps": [
+   {
+    "title": "Возьми простую еду.",
+    "text": "Подойдёт то, что есть дома и можно быстро собрать или разогреть."
+   },
+   {
+    "title": "Поешь без работы.",
+    "text": "На время закрой документы и отложи переписку. Потом решишь, что делать дальше."
+   }
+  ]
+ },
+ "rest": {
+  "name": "Отдохнуть",
+  "check": "rest",
+  "steps": [
+   {
+    "title": "Несколько минут без дел.",
+    "text": "Посиди или полежи. Можно закрыть глаза, посмотреть в окно или включить знакомую спокойную музыку.",
+    "timer": 300,
+    "timerLabel": "Время на отдых",
+    "tip": "Если хочется отдыхать дольше, не нужно останавливаться из-за таймера."
+   }
+  ]
+ },
+ "work": {
+  "name": "Начать дело",
+  "check": "focus",
+  "steps": [
+   {
+    "title": "С чего начнёшь?",
+    "text": "Одно действие: написать первую фразу, открыть нужный файл, убрать со стола чашку.",
+    "input": "task",
+    "placeholder": "Первым делом я…",
+    "nextLabel": "Перейти к делу"
+   },
+   {
+    "title": "Попробуй две минуты.",
+    "text": "Займись только выбранным действием. Остальные вкладки пока закрой.",
+    "task": true,
+    "timer": 120,
+    "timerLabel": "Две минуты на начало"
+   },
+   {
+    "title": "Как идёт?",
+    "text": "Продолжай, если втянулся. Если сил нет — выбери перерыв.",
+    "choices": [
+     [
+      "Продолжу ещё 25 минут",
+      "focus"
+     ],
+     [
+      "Нужен перерыв",
+      "rest"
+     ],
+     [
+      "На сегодня хватит",
+      "complete"
+     ]
+    ]
+   }
+  ]
+ },
+ "focus": {
+  "name": "Одно дело",
+  "check": "focus",
+  "steps": [
+   {
+    "title": "Займись одной задачей.",
+    "text": "Отключи ненужные уведомления. Если вспомнишь другое дело, запиши и вернись к нему потом.",
+    "task": true,
+    "timer": 1500,
+    "timerLabel": "Время на работу"
+   },
+   {
+    "title": "Встань и разомнись.",
+    "text": "Отойди от экрана на несколько минут. Потом решишь, продолжать ли."
+   }
+  ]
+ },
+ "overload": {
+  "name": "Голова кипит",
+  "steps": [
+   {
+    "title": "Выключи то, что сейчас слушаешь или смотришь.",
+    "text": "Закрой ленту и несрочные чаты. Новые советы тоже подождут."
+   },
+   {
+    "title": "Посмотри вокруг.",
+    "text": "Поставь ноги на пол. Назови про себя три предмета, которые видишь. Дыши как обычно.",
+    "timer": 60,
+    "timerLabel": "Минута без новой информации"
+   },
+   {
+    "title": "Что поможет сейчас?",
+    "text": "Выбери что-то одно.",
+    "choices": [
+     [
+      "Отдохнуть",
+      "rest"
+     ],
+     [
+      "Поесть",
+      "food"
+     ],
+     [
+      "Поговорить с близким",
+      "connection"
+     ],
+     [
+      "Разобраться с одним делом",
+      "work"
+     ]
+    ]
+   }
+  ]
+ },
+ "bored": {
+  "name": "Скучно",
+  "steps": [
+   {
+    "title": "Выбери занятие без ленты.",
+    "text": "Послушать песню целиком, сделать чай, выйти на улицу, что-нибудь нарисовать.",
+    "choices": [
+     [
+      "Хочу сделать что-нибудь своё",
+      "create"
+     ],
+     [
+      "Лучше отдохну",
+      "rest"
+     ],
+     [
+      "Я выбрал",
+      "complete"
+     ]
+    ]
+   }
+  ]
+ },
+ "connection": {
+  "name": "Хочется общения",
+  "steps": [
+   {
+    "title": "Напиши одному человеку.",
+    "text": "Например: «Привет. Хочется поболтать. У тебя сегодня будет минут десять?»",
+    "tip": "Если сейчас не ответит, можно договориться на другое время."
+   },
+   {
+    "title": "Предложи что-нибудь конкретное.",
+    "text": "Созвониться, пройтись, поиграть вместе. Большую встречу устраивать не нужно."
+   }
+  ]
+ },
+ "create": {
+  "name": "Что-нибудь своё",
+  "check": "create",
+  "steps": [
+   {
+    "title": "Что хочется сделать?",
+    "text": "Написать пару строк, набросать идею, порисовать. Можно начать здесь.",
+    "input": "note",
+    "placeholder": "Мне пришло в голову…",
+    "timer": 600,
+    "timerLabel": "Время на своё",
+    "tip": "Не обязательно публиковать или доводить до готового результата."
+   },
+   {
+    "title": "Можно оставить как есть.",
+    "text": "Запись сохранится в «Моём дне». Продолжишь, когда захочешь."
+   }
+  ]
+ },
+ "evening": {
+  "name": "Закончить работу",
+  "check": "finish",
+  "steps": [
+   {
+    "title": "На чём продолжишь завтра?",
+    "text": "Запиши один следующий шаг. Например: «Допишу последний абзац».",
+    "input": "tomorrow",
+    "placeholder": "Завтра начну с…",
+    "nextLabel": "Дальше"
+   },
+   {
+    "title": "Закрой рабочие файлы и чаты.",
+    "text": "Оставь только тот канал связи, который действительно нужен для срочных дел."
+   },
+   {
+    "title": "Теперь — свободное время.",
+    "text": "Можно посмотреть фильм, поиграть, поговорить или просто отдохнуть. Если уже собирался спать, переходи к ночной инструкции.",
+    "choices": [
+     [
+      "Пора готовиться ко сну",
+      "bedtime"
+     ],
+     [
+      "Пока отдохну",
+      "next"
+     ]
+    ]
+   },
+   {
+    "title": "Учти завтрашний подъём.",
+    "text": "Большинству взрослых нужно около 7–9 часов сна. Постарайся оставить для этого время.",
+    "choices": [
+     [
+      "Открыть инструкцию на ночь",
+      "bedtime"
+     ],
+     [
+      "Закончить",
+      "complete"
+     ]
+    ]
+   }
+  ]
+ },
+ "bedtime": {
+  "name": "Пора заканчивать день",
+  "night": true,
+  "steps": [
+   {
+    "title": "Что не даёт лечь?",
+    "text": "Выбери свою ситуацию. Здесь короткий маршрут — потом можно убрать телефон.",
+    "choices": [
+     [
+      "Хочется открыть проект",
+      "nightProject"
+     ],
+     [
+      "Залип в телефоне",
+      "nightScroll"
+     ],
+     [
+      "Лёг, но не спится",
+      "nightAwake"
+     ]
+    ]
+   }
+  ]
+ },
+ "nightProject": {
+  "name": "Проект подождёт до утра",
+  "night": true,
+  "steps": [
+   {
+    "title": "Запиши мысль — и хватит на сегодня.",
+    "text": "Пара строк: что придумал и с чего начнёшь после сна. Проект и референсы для этого не открывай.",
+    "input": "nightNote",
+    "placeholder": "Идея: …\nПосле сна первым делом: …",
+    "nextLabel": "Дальше",
+    "tip": "Поле можно оставить пустым. Запись будет в «Моём дне» под заголовком «После сна»."
+   },
+   {
+    "title": "Дальше — без экрана.",
+    "text": "Прочитай оставшиеся шаги и убери телефон. Возвращаться сюда не нужно.",
+    "list": [
+     "Если сидишь в ванной или туалете — закончи и выйди.",
+     "Поставь будильник, если нужен. Убери телефон подальше от кровати.",
+     "Умойся, почисти зубы, приглуши свет. Если клонит в сон — ложись."
+    ],
+    "tip": "Если сна пока нет, посиди с бумажной книгой или спокойной музыкой. К проекту вернёшься после сна.",
+    "exit": true
+   }
+  ]
+ },
+ "nightScroll": {
+  "name": "Закончить листать",
+  "night": true,
+  "steps": [
+   {
+    "title": "Закрой ленту сейчас.",
+    "text": "Не нужно искать последний хороший ролик. Прочитай три шага и отложи экран.",
+    "list": [
+     "Поставь будильник, если нужен.",
+     "Убери телефон подальше от кровати.",
+     "Умойся, приглуши свет. Если хочется спать — ложись."
+    ],
+    "tip": "Если не спится, выбери тихое занятие без ленты и работы. Ложись, когда начнёт клонить в сон.",
+    "exit": true
+   }
+  ]
+ },
+ "nightAwake": {
+  "name": "Не получается уснуть",
+  "night": true,
+  "steps": [
+   {
+    "title": "Не нужно выдавливать из себя сон.",
+    "text": "Если лежишь без сна и начинаешь злиться или тревожиться, ненадолго встань.",
+    "list": [
+     "Оставь свет приглушённым.",
+     "Почитай бумажную книгу или послушай спокойную музыку. Проект и лента подождут.",
+     "Вернись в кровать, когда появится сонливость. На часы можно не смотреть."
+    ],
+    "tip": "Если такое повторяется и мешает днём, обсуди сон с врачом.",
+    "exit": true
+   }
+  ]
+ }
+};
+let flowHistory=[],lastTrigger=null;
+function openFlow(id,restore=false){dayCheck();if(!flows[id])return;if(!restore&&state.flow&&state.flow.id===id&&!state.flow.complete)restore=true;if(!restore&&state.timer?.running&&!confirm('Сейчас идёт таймер. Остановить его и открыть другую инструкцию?'))return;if(!restore){state.flow={id,step:0};state.timer=null;flowHistory=[];save();}lastTrigger=document.activeElement;renderFlow();if(!$('#flowDialog').open)$('#flowDialog').showModal();$('#stepTitle')?.focus({preventScroll:true});updateResume();}
+function transition(action){if(action==='next')return nextStep();if(action==='complete')return completeFlow();flowHistory.push({...state.flow});state.flow={id:action,step:0};state.timer=null;save();renderFlow();}
+function nextStep(){const f=flows[state.flow.id];if(state.flow.step>=f.steps.length-1)return completeFlow();flowHistory.push({...state.flow});state.flow.step++;state.timer=null;save();renderFlow();}
+function completeFlow(){const f=flows[state.flow.id];state.timer=null;state.flow={...state.flow,complete:true};save();const mark=f.check;$('#flowBody').innerHTML=`<div class="complete-mark" aria-hidden="true">✓</div><div class="step-number">Инструкция закончилась</div><h2 id="stepTitle" tabindex="-1">На этом всё.</h2><p class="step-description">Можно закрыть приложение. Если шаг не подошёл, выбери другую инструкцию.</p>${mark?`<div class="step-tip">Если сделал — можно поставить галочку в «Моём дне».</div><div class="dialog-footer"><button class="button" data-mark="${mark}">Отметить и закончить</button></div>`:''}<div class="dialog-footer"><button class="button ${mark?'secondary':''}" data-action="finish">Закрыть</button></div>`;if($('#flowDialog').open)$('#stepTitle')?.focus({preventScroll:true});renderDay();updateResume();}
+function renderFlow(){if(!state.flow||!flows[state.flow.id])return;if(state.flow.complete){completeFlow();return;}const f=flows[state.flow.id];if(!Number.isInteger(state.flow.step)||state.flow.step<0||state.flow.step>=f.steps.length)state.flow.step=0;const s=f.steps[state.flow.step];$('#flowName').textContent=f.name;const inputValue=s.input==='note'?state.note:s.input==='task'?state.task:s.input==='nightNote'?state.nightNote:state.tomorrow||'';$('#flowBody').innerHTML=`<div class="step-progress" aria-hidden="true">${f.steps.map((_,i)=>`<i class="${i<=state.flow.step?'done':''}"></i>`).join('')}</div><div class="step-number">Шаг ${state.flow.step+1} из ${f.steps.length}</div><h2 id="stepTitle" tabindex="-1">${s.title}</h2><p class="step-description">${s.text}</p>${s.list?`<ol class="offline-list">${s.list.map(item=>`<li>${escapeHTML(item)}</li>`).join('')}</ol>`:''}${s.task&&state.task?`<div class="step-tip">Твой шаг: ${escapeHTML(state.task)}</div>`:''}${s.input?`<textarea class="step-input" data-input="${s.input}" aria-label="${s.placeholder}" placeholder="${s.placeholder}" maxlength="3000">${escapeHTML(inputValue||'')}</textarea><div class="saved" id="stepSaved" aria-live="polite">Запись сохраняется в этом браузере</div>`:''}${s.tip?`<div class="step-tip">${s.tip}</div>`:''}${s.timer?`<div class="timer"><div class="time" id="timerDisplay" role="timer" aria-label="Оставшееся время">${formatTime(s.timer)}</div><p id="timerLabel">${s.timerLabel}</p><div class="timer-controls"><button id="timerToggle" data-action="timer">Начать</button><button class="reset" data-action="resetTimer">Сначала</button></div><p>Можно убрать телефон и вернуться позже.</p></div>`:''}${s.choices?`<div class="choice-list">${s.choices.map(([label,act])=>`<button class="choice" data-choice="${act}">${label}<span aria-hidden="true">↗</span></button>`).join('')}</div>`:`<div class="dialog-footer"><button class="button" data-action="${s.exit?'bedtime':'next'}">${s.exit?'Закончить и убрать телефон':s.nextLabel||(state.flow.step===f.steps.length-1?'Закончить':s.timer?'Дальше':'Сделал, дальше')} <span aria-hidden="true">→</span></button></div>`}<div class="mini-note">${flowHistory.length?'<button class="back" data-action="back">← Назад</button>':''}${s.timer?'<span>Таймер можно не запускать.</span>':''}</div>${!f.night?'<div class="quiet-exit"><button data-action="leave">Не подходит — выбрать другое</button></div>':''}`;$('#flowDialog').scrollTop=0;if($('#flowDialog').open)$('#stepTitle')?.focus({preventScroll:true});tick();}
+function formatTime(seconds){const n=Math.max(0,Math.ceil(seconds));return Math.floor(n/60).toString().padStart(2,'0')+':'+(n%60).toString().padStart(2,'0');}
+function remaining(t){return t.running?Math.max(0,(t.end-Date.now())/1000):t.left;}
+function currentTimerKey(){return state.flow?state.flow.id+':'+state.flow.step:null;}
+function toggleTimer(){const s=flows[state.flow.id].steps[state.flow.step];if(!s.timer)return;let t=state.timer;if(!t||t.key!==currentTimerKey())t={key:currentTimerKey(),left:s.timer,running:false,done:false};if(t.running){t.left=remaining(t);t.running=false;}else{if(t.left<=0)t.left=s.timer;t.end=Date.now()+t.left*1000;t.running=true;t.done=false;}state.timer=t;save();tick();}
+function tick(){if(document.hidden){scheduleClock();return;}const t=state.timer;if(t&&t.running&&remaining(t)<=0){t.running=false;t.left=0;t.done=true;save();toast('Время прошло. Можно решить, что дальше.');}if($('#timerDisplay')&&state.flow){const s=flows[state.flow.id]?.steps[state.flow.step];if(s?.timer){const current=t&&t.key===currentTimerKey()?t:null;putText('#timerDisplay',formatTime(current?remaining(current):s.timer));putText('#timerToggle',current?.running?'Пауза':current?.done?'Ещё раз':current&&current.left<s.timer?'Продолжить':'Начать');putText('#timerLabel',current?.done?'Время прошло. Можно перейти дальше.':s.timerLabel);}}updateResume();scheduleClock();}
+function updateResume(){const b=$('#resume');const hide=!state.flow||$('#flowDialog').open||state.flow.complete;if(b.hidden!==!!hide)b.hidden=!!hide;if(!hide){const t=state.timer;putText('#resume',t?'Вернуться · '+(t.done?'время прошло':formatTime(remaining(t))):'Продолжить инструкцию →');}}
+function finish(){state.flow=null;state.timer=null;flowHistory=[];save();scheduleClock();$('#flowDialog').close();renderDay();updateResume();}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.page)page(b.dataset.page);if(b.dataset.flow)openFlow(b.dataset.flow);if(b.dataset.choice)transition(b.dataset.choice);if(b.dataset.mark){state.checks[b.dataset.mark]=true;finish();toast('Отмечено. На сегодня можно остановиться.');}switch(b.dataset.action){case'bedtime':finish();page('closed');break;case'leave':finish();page('now');break;case'next':nextStep();break;case'timer':toggleTimer();break;case'resetTimer':state.timer=null;save();tick();break;case'finish':finish();break;case'back':if(flowHistory.length){state.flow=flowHistory.pop();state.timer=null;save();renderFlow();}break;}});
+$('#closeDialog').addEventListener('click',()=>$('#flowDialog').close());
+$('#flowDialog').addEventListener('close',()=>{renderDay();updateResume();if(lastTrigger?.isConnected)lastTrigger.focus({preventScroll:true});});
+$('#resume').addEventListener('click',()=>openFlow(state.flow.id,true));
+$('#dailyList').addEventListener('change',e=>{if(e.target.dataset.check){dayCheck();state.checks[e.target.dataset.check]=e.target.checked;save();$('#dailyCount').textContent=`Сегодня отмечено: ${daily.filter(x=>state.checks[x.id]).length}.`;}});
+$('#minimalBtn').onclick=()=>{state.minimum=true;save();renderDay();};$('#fullBtn').onclick=()=>{state.minimum=false;save();renderDay();};
+$('#ownNote').addEventListener('input',e=>{state.note=e.target.value;save();$('#noteSaved').textContent=storageOK?'Сохранено на этом устройстве':'Не удалось сохранить — можно скопировать текст';});
+$('#flowBody').addEventListener('input',e=>{if(!e.target.dataset.input)return;state[e.target.dataset.input]=e.target.value;save();putText('#stepSaved',storageOK?'Сохранено на этом устройстве':'Не удалось сохранить — можно скопировать текст');if(e.target.dataset.input==='note')$('#ownNote').value=state.note;});
+$('#clearNightNote').onclick=()=>{if(confirm('Удалить запись «После сна»?')){state.nightNote='';save();renderDay();}};
+$('#clearData').onclick=()=>{if(confirm('Удалить все сохранённые записи, сегодняшние отметки и незавершённую инструкцию?')){state=fresh();flowHistory=[];save();scheduleClock();renderDay();updateResume();toast('Отметки и записи удалены.');}};
+$('#download').onclick=()=>{const clone=document.documentElement.cloneNode(true);clone.querySelectorAll('[data-install-resource]').forEach(n=>n.remove());clone.querySelectorAll('textarea').forEach(n=>{n.value='';n.textContent='';});clone.querySelector('#flowBody').innerHTML='';clone.querySelector('#plannedText').textContent='';clone.querySelector('#nightPlanText').textContent='';clone.querySelector('#nightPlan').hidden=true;clone.querySelector('#plannedStep').hidden=true;clone.querySelectorAll('input[type=checkbox]').forEach(n=>{n.checked=false;n.removeAttribute('checked');});clone.querySelector('#dailyCount').textContent='';clone.querySelector('#resume').textContent='';clone.querySelector('#resume').hidden=true;clone.querySelector('#flowDialog').removeAttribute('open');const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='odin-shag.html';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('HTML-копия подготовлена без личных записей.');};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){dayCheck();tick();}else{scheduleClock();}scheduleDay();});
+window.addEventListener?.('pageshow',()=>{dayCheck();tick();scheduleDay();});
+window.addEventListener?.('pagehide',()=>{clearTimeout(clockJob);clearTimeout(dayJob);});
+validateSession();renderDate();renderDay();page('now');$('#flowDialog').removeAttribute('open');$('#toast').hidden=true;$('#storageWarning').hidden=storageOK;tick();scheduleDay();
+
+// Cache readiness is confirmed by the controlling worker, never by an online flag.
+let offlineReady=false,offlineBusy=false;
+function offlineStatus(message,retry=false){putText('#offlineText',message);$('#offlineRetry').hidden=!retry;$('#offlineStatus').setAttribute('data-ready',String(offlineReady));}
+function askOfflineWorker(){return new Promise(resolve=>{
+ const worker=navigator.serviceWorker.controller;
+ if(!worker){resolve(false);return;}
+ const channel=new MessageChannel();let settled=false;
+ const finish=value=>{if(settled)return;settled=true;clearTimeout(deadline);channel.port1.close();resolve(value);};
+ const deadline=setTimeout(()=>finish(false),2500);
+ channel.port1.onmessage=e=>finish(e.data?.type==='OFFLINE_STATUS'&&e.data.ready===true);
+ try{worker.postMessage({type:'OFFLINE_STATUS'},[channel.port2]);}catch(e){finish(false);}
+});}
+async function verifyOffline(){
+ try{offlineReady=await askOfflineWorker();}catch(e){offlineReady=false;}
+ if(offlineReady)offlineStatus('Готово к работе без интернета');
+ return offlineReady;
+}
+async function setupOffline(){
+ if(offlineBusy)return;
+ if(typeof navigator==='undefined'||typeof location==='undefined')return;
+ if(location.protocol==='file:'){offlineStatus('HTML-копия работает без интернета');return;}
+ if(!('serviceWorker' in navigator)||!window.isSecureContext){offlineStatus('Для сохранения без интернета открой приложение в Safari.');return;}
+ offlineBusy=true;
+ if(!offlineReady)offlineStatus('Сохраняю приложение для работы без интернета…');
+ let deadline;
+ try{
+  await verifyOffline();
+  await navigator.serviceWorker.register(new URL('./sw.js',location.href),{scope:'./',updateViaCache:'none'});
+  await Promise.race([navigator.serviceWorker.ready,new Promise((_,reject)=>{deadline=setTimeout(()=>reject(new Error('Installation timeout')),20000);})]);
+  clearTimeout(deadline);
+  if(!await verifyOffline())offlineStatus('Копия пока не готова. Подключись к интернету и нажми «Повторить».',true);
+ }catch(e){if(!await verifyOffline())offlineStatus('Не удалось сохранить офлайн-копию. Открой в Safari с интернетом и попробуй ещё раз.',true);}
+ finally{clearTimeout(deadline);offlineBusy=false;}
+}
+$('#offlineRetry').addEventListener('click',setupOffline);
+if(typeof navigator!=='undefined'&&'serviceWorker' in navigator){navigator.serviceWorker.addEventListener('controllerchange',()=>verifyOffline());}
+setupOffline();
+
+})();
+</script>
+</body>
+</html>
