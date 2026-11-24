@@ -94,6 +94,7 @@ tbody td { white-space: nowrap; }
 .image-link.sapphire { background: #e8eeed; }
 .image-link.ruby { background: #070d10; }
 .image-link.opal { background: #080909; }
+.opal-feature { max-width: 28rem; margin-inline: auto; }
 .stone-chapter { margin-block-start: 2.3rem; }
 
 .choice { margin-block: clamp(3.7rem, 8vw, 6.25rem) 2rem; padding: clamp(1.45rem, 5vw, 2.9rem); background: #263d32; color: #faf8f0; }
